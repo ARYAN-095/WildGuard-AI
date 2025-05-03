@@ -154,9 +154,10 @@ pip install -r requirements.txt
 
 # Frontend
 
+```
 cd frontend
 npm install
-
+```
 
 # Environment Setup
  Ensure FFMPEG is on your PATH
