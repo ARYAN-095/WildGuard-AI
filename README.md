@@ -285,9 +285,11 @@ Preprocesses → model inference → returns result
 
 
 # Frontend (React + Vite)
- 
+
+ ```
 cd frontend
 npm run dev
+```
 
 Upload Files tab: select audio → displays spectrogram & prediction
 
