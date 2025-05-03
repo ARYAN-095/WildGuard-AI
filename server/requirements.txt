@@ -1,0 +1,26 @@
+# Core
+numpy==1.26.4
+pandas==2.2.1
+scikit-learn
+matplotlib==3.8.3
+seaborn
+
+# Audio processing
+librosa
+soundfile  # required for librosa to read .wav files
+
+# Deep learning
+torch
+torchaudio
+tensorflow  # optional, only if you want to experiment with both PyTorch and TensorFlow
+
+# Jupyter for notebooks
+notebook
+ipykernel
+
+# Miscellaneous
+tqdm  # progress bars
+
+
+streamlit-webrtc
+pydub

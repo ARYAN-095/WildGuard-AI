@@ -1,0 +1,24 @@
+helperdata.txt
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# VS Code settings
+.vscode/
+
+# Virtual environments
+venv/
+wildguard/
+
+# Data & model artifacts
+data/
+experiments/
+uploads/
+
+ 
+
+# Miscellaneous temp files
+recorded.wav
+
