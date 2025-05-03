@@ -176,6 +176,7 @@ npm install
 ```
 
 # Environment Setup
+
  Ensure FFMPEG is on your PATH
 
 On Windows, enable “Stereo Mix” (Recording devices) if you plan to capture system audio
@@ -232,8 +233,8 @@ Create manifest.csv with columns Dataset File Name,Class Name,spec_path
 
 # Training the Model
  
-# Activate venv, then:
-
+Activate venv, then:
+```
 python -m src.train \
   --manifest_csv data/processed/specs/manifest.csv \
   --batch_size 32 \
@@ -241,6 +242,7 @@ python -m src.train \
   --epochs 30 \
   --val_frac 0.2
 Outputs loss/accuracy curves
+```
 
 Saves final weights to experiments/audio_cnn_final.pth
 
