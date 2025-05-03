@@ -82,7 +82,7 @@ Extensible pipeline: Easily swap in new model architectures
 
 # Directory Structure
 
-'''
+```
 WildGuard-AI/
 │
 ├── app.py                      # Flask API server
@@ -116,7 +116,7 @@ WildGuard-AI/
 ├── uploads/                    # Temporary uploaded audio files
 ├── requirements.txt            # Python dependencies
 └── package.json                # Frontend dependencies
-'''
+```
  
 
 # Getting Started
@@ -136,28 +136,28 @@ Optional (Windows): Stereo Mix enabled in OS sound settings for system-sound rec
 # Installing Dependencies
 
 Clone the repository
-'''
+
+```
 git clone https://github.com/yourusername/WildGuard-AI.git
 cd WildGuard-AI
-Python environment
-'''
+```
 
- '''
+
+Python environment
+ ```
 python -m venv venv
 source venv/bin/activate      # Linux/macOS
 .\venv\Scripts\activate       # Windows PowerShell
 pip install -r requirements.txt
-
-'''
+```
 
 
 # Frontend
 
- 
 cd frontend
 npm install
 
- 
+
 # Environment Setup
  Ensure FFMPEG is on your PATH
 
@@ -165,6 +165,7 @@ On Windows, enable “Stereo Mix” (Recording devices) if you plan to capture s
 
  
 # Data Preparation
+
 FSC22 Dataset Layout
 Audio Wise V1.0/: 2,025 × 5s .wav files
 
@@ -180,6 +181,7 @@ Generating Spectrogram Features
  
 
 # From project root
+
 python scripts/generate_features.py \
   --metadata data/metadata/Metadata\ V1.0\ fsc22.csv \
   --output_dir data/processed/specs \
@@ -202,6 +204,7 @@ Create manifest.csv with columns Dataset File Name,Class Name,spec_path
 # Training the Model
  
 # Activate venv, then:
+
 python -m src.train \
   --manifest_csv data/processed/specs/manifest.csv \
   --batch_size 32 \
@@ -226,13 +229,15 @@ POST /upload
 Form-data key file → any audio file (.wav, .mp3, .webm)
 
 Returns JSON:
- 
+
+ ```
 {
   "message": "Prediction successful",
   "filename": "recorded_audio.wav",
   "prediction": "Gunshot",
   "confidence": "92.35%"
 }
+```
 Internally, app.py:
 
 Saves upload to uploads/
@@ -247,6 +252,7 @@ Preprocesses → model inference → returns result
  
 cd frontend
 npm run dev
+
 Upload Files tab: select audio → displays spectrogram & prediction
 
 Live Detection tab:
@@ -260,7 +266,7 @@ Start/Stop recording → uploads blob → shows real-time result
 
 # Architecture
  
- '''
+ ```
 [Browser UI: React + Vite]
     │
     │ HTTP POST /upload         [Optional WebRTC for live]
@@ -272,34 +278,35 @@ Start/Stop recording → uploads blob → shows real-time result
     └─ Inference (PyTorch ResNetAudio)
           ↓
     JSON { prediction, confidence }
-    '''
+```
 
 
 
 
 # Usage Examples
 cURL Test
- '''
+ ```
 curl -X POST http://localhost:5000/upload \
   -F "file=@path/to/gunshot.wav"
-  '''
+  ```
 
 Python Client
  
- '''
+ ```
 import requests
 resp = requests.post(
     "http://localhost:5000/upload",
     files={"file": open("gunshot.wav","rb")}
 )
 print(resp.json())
-'''
+```
 
 
 
 
 
 # Advanced Topics & Tips
+
 Model Improvements:
 
 SpecAugment, MixUp, focal loss, ensemble of CNN + ResNet
