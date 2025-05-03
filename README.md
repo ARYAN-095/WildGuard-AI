@@ -2,6 +2,8 @@
 Forest Sound Classification & Poaching Detection
 
 
+
+
 # Table of Contents
 
  Project Overview
@@ -43,6 +45,9 @@ License
 
 
 
+
+
+
 # Project Overview
 
 WildGuard-AI is an end-to-end system for forest acoustic monitoring, designed to detect sounds associated with illegal activities (gunshots, chainsaws) and key wildlife calls. It combines:
@@ -77,6 +82,9 @@ File uploader (supports multiple formats)
 Live microphone recording with configurable input device
 
 Extensible pipeline: Easily swap in new model architectures
+
+
+
 
 
 
@@ -117,6 +125,10 @@ WildGuard-AI/
 ├── requirements.txt            # Python dependencies
 └── package.json                # Frontend dependencies
 ```
+
+
+
+
  
 
 # Getting Started
@@ -133,6 +145,9 @@ Optional (Windows): Stereo Mix enabled in OS sound settings for system-sound rec
 
 
 
+
+
+
 # Installing Dependencies
 
 Clone the repository
@@ -141,6 +156,7 @@ Clone the repository
 git clone https://github.com/yourusername/WildGuard-AI.git
 cd WildGuard-AI
 ```
+
 
 
 Python environment
@@ -164,6 +180,9 @@ npm install
 
 On Windows, enable “Stereo Mix” (Recording devices) if you plan to capture system audio
 
+
+
+
  
 # Data Preparation
 
@@ -181,12 +200,19 @@ Class ID, Class Name
 Generating Spectrogram Features
  
 
+
+
+
+
 # From project root
 
+```
 python scripts/generate_features.py \
   --metadata data/metadata/Metadata\ V1.0\ fsc22.csv \
   --output_dir data/processed/specs \
   --audio_dir data/raw/Audio\ Wise\ V1.0
+```
+
 This will:
 
 Load metadata
@@ -198,6 +224,8 @@ Compute log-mel spectrogram
 Save .npy to data/processed/specs/
 
 Create manifest.csv with columns Dataset File Name,Class Name,spec_path
+
+
 
 
 
@@ -215,6 +243,8 @@ python -m src.train \
 Outputs loss/accuracy curves
 
 Saves final weights to experiments/audio_cnn_final.pth
+
+
 
 
 
@@ -249,6 +279,9 @@ Preprocesses → model inference → returns result
 
 
 
+
+
+
 # Frontend (React + Vite)
  
 cd frontend
@@ -261,6 +294,8 @@ Live Detection tab:
 Pick input device (e.g. Stereo Mix)
 
 Start/Stop recording → uploads blob → shows real-time result
+
+
 
 
 
@@ -284,6 +319,10 @@ Start/Stop recording → uploads blob → shows real-time result
 
 
 
+
+
+
+
 # Usage Examples
 cURL Test
  ```
@@ -301,6 +340,9 @@ resp = requests.post(
 )
 print(resp.json())
 ```
+
+
+
 
 
 
